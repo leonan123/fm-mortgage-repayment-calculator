@@ -1,78 +1,86 @@
+import { DollarSign } from 'lucide-react'
 import calculatorIcon from '../assets/images/icon-calculator.svg'
+import { FormControl, FormItem } from './ui/form'
+import { Input } from './ui/input'
+import { Label } from './ui/label'
+import { InputPrefix } from './ui/input-prefix'
 
 export function MortgageCalculatorForm() {
   return (
-    <form action="" className="space-y-5">
+    <form className="space-y-5">
       <div className="space-y-3">
-        <div className="space-y-1.5">
-          <label htmlFor="" className="text-xs font-medium text-slate-500">
-            Mortgage Amount
-          </label>
-          <input
-            type="text"
-            className="h-8 w-full rounded border border-slate-500 text-sm font-bold text-slate-900"
-          />
-        </div>
+        <FormItem>
+          <Label htmlFor="amount">Mortgage Amount</Label>
+
+          <FormControl>
+            <InputPrefix>
+              <DollarSign className="size-3.5" />
+            </InputPrefix>
+
+            <Input type="text" name="amount" />
+          </FormControl>
+        </FormItem>
 
         <div className="flex items-center gap-3">
-          <div className="space-y-1.5">
-            <label htmlFor="" className="text-xs font-medium text-slate-500">
-              Mortgage Term
-            </label>
-            <input
-              type="text"
-              className="h-8 w-full rounded border border-slate-500 text-sm font-bold text-slate-900"
-            />
-          </div>
+          <FormItem className="w-1/2">
+            <Label htmlFor="mortgage-term">Mortgage Term</Label>
 
-          <div className="space-y-1.5">
-            <label htmlFor="" className="text-xs font-medium text-slate-500">
-              Interest Rate
-            </label>
-            <input
-              type="text"
-              className="h-8 w-full rounded border border-slate-500 text-sm font-bold text-slate-900"
-            />
-          </div>
+            <FormControl>
+              <Input type="text" name="mortgage-term" />
+
+              <InputPrefix>Years</InputPrefix>
+            </FormControl>
+          </FormItem>
+
+          <FormItem className="w-1/2">
+            <Label htmlFor="interest-rate">Interest Rate</Label>
+
+            <FormControl>
+              <Input type="text" name="interest-rate" />
+
+              <InputPrefix>%</InputPrefix>
+            </FormControl>
+          </FormItem>
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <label
-            htmlFor="mortgage-type"
-            className="text-xs font-medium text-slate-500"
-          >
-            Mortgage Type
-          </label>
+          <Label>Mortgage Type</Label>
 
-          <div className="space-y-1.5">
-            <label className="flex h-8 items-center gap-3 rounded border border-slate-500 px-3 has-[:checked]:border-primary-lime has-[:checked]:bg-primary-lime/20">
-              <input
-                type="radio"
-                name="mortgage-type"
-                className="size-3.5 accent-primary-lime"
-              />
-              <span className="text-xs font-bold text-slate-900">
+          <FormItem className="inline-grid">
+            <Label className="group font-bold text-slate-900">
+              <FormControl className="gap-3 px-3 text-xs">
+                <input
+                  type="radio"
+                  id="repayment"
+                  name="mortgage-type"
+                  value="repayment"
+                  className="sr-only"
+                />
+                <div className="size-3.5 rounded-full border border-slate-700 p-0.5 after:hidden after:h-full after:w-full after:rounded-full after:bg-primary-lime group-has-[:checked]:border-primary-lime after:group-has-[:checked]:block" />
                 Repayment
-              </span>
-            </label>
+              </FormControl>
+            </Label>
 
-            <label className="flex h-8 items-center gap-3 rounded border border-slate-500 px-3 has-[:checked]:border-primary-lime has-[:checked]:bg-primary-lime/20">
-              <input
-                type="radio"
-                name="mortgage-type"
-                className="size-3.5 accent-primary-lime"
-              />
-              <span className="text-xs font-bold text-slate-900">
+            <Label className="group font-bold text-slate-900">
+              <FormControl className="gap-3 px-3 text-xs">
+                <input
+                  type="radio"
+                  id="interest"
+                  name="mortgage-type"
+                  value="interest"
+                  className="sr-only"
+                />
+                <div className="size-3.5 rounded-full border border-slate-700 p-0.5 after:hidden after:h-full after:w-full after:rounded-full after:bg-primary-lime group-has-[:checked]:border-primary-lime after:group-has-[:checked]:block" />
                 Interest Only
-              </span>
-            </label>
-          </div>
+              </FormControl>
+            </Label>
+          </FormItem>
         </div>
       </div>
 
       <button
         type="submit"
-        className="flex h-9 w-auto items-center justify-center gap-3 rounded-full bg-primary-lime px-6"
+        className="flex h-9 w-auto items-center justify-center gap-3 rounded-full bg-primary-lime px-6 transition-colors hover:bg-primary-lime/50"
       >
         <img src={calculatorIcon} alt="" className="size-4" />
         <span className="text-xs font-bold text-slate-900">
