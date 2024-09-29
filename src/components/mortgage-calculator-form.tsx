@@ -83,6 +83,7 @@ export function MortgageCalculatorForm({
             <Input
               type="text"
               mask="currency"
+              id="mortgage_amount"
               {...register('mortgage_amount', { valueAsNumber: false })}
             />
           </FormControl>
@@ -101,6 +102,7 @@ export function MortgageCalculatorForm({
             <FormControl aria-invalid={!!errors.mortgage_term}>
               <Input
                 type="text"
+                id="mortgage_term"
                 {...register('mortgage_term', { valueAsNumber: true })}
               />
 
@@ -122,6 +124,7 @@ export function MortgageCalculatorForm({
                 type="number"
                 step="0.01"
                 min={0}
+                id="interest_rate"
                 {...register('interest_rate', { valueAsNumber: true })}
               />
 
