@@ -29,11 +29,9 @@ The designs were created to the following widths:
 
 ### Body Copy
 
-- Font size (paragraph): 16px 
+- Font size (paragraph): 16px
 
 ### Font
 
 - Family: [Plus Jakarta Sans](https://fonts.google.com/specimen/Plus+Jakarta+Sans)
 - Weights: 500, 700
-
-> 💎 [Upgrade to Pro](https://www.frontendmentor.io/pro?ref=style-guide) for design file access to see all design details and get hands-on experience using a professional workflow with tools like Figma. The design file for this challenge also includes a design system and tablet layout to help you build a more accurate solution faster.
