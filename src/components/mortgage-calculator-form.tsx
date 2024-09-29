@@ -4,11 +4,11 @@ import { FormControl, FormItem } from './ui/form'
 import { Input } from './ui/input'
 import { Label } from './ui/label'
 import { InputPrefix } from './ui/input-prefix'
-import { useForm } from 'react-hook-form'
+import { useForm, useFormContext } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-const mortgageCalculatorFormSchema = z
+export const mortgageCalculatorFormSchema = z
   .object({
     mortgage_amount: z.string().min(1, { message: 'This field is required' }),
     interest_rate: z.coerce
@@ -51,16 +51,12 @@ export function MortgageCalculatorForm({
     register,
     handleSubmit,
     formState: { isSubmitting, errors }
-  } = useForm<MortgageCalculatorFormType>({
-    resolver: zodResolver(mortgageCalculatorFormSchema)
-  })
+  } = useFormContext<MortgageCalculatorFormType>()
 
   function handleSubmitForm(data: MortgageCalculatorFormType) {
-    // Convert interest rate from percentage to decimal
     const monthlyInterestRate = data.interest_rate / 12 / 100
     const totalPayments = data.mortgage_term * 12 // Assuming yearly payments
 
-    // Calculate monthly payment
     let monthlyPayment: number
 
     if (data.mortgage_type === 'interest') {
@@ -76,7 +72,7 @@ export function MortgageCalculatorForm({
 
   return (
     <form className="space-y-5" onSubmit={handleSubmit(handleSubmitForm)}>
-      <div className="space-y-3">
+      <div className="space-y-2 sm:space-y-3">
         <FormItem>
           <Label htmlFor="mortgage_amount">Mortgage Amount</Label>
 
@@ -99,8 +95,8 @@ export function MortgageCalculatorForm({
           )}
         </FormItem>
 
-        <div className="flex gap-3">
-          <FormItem className="w-1/2">
+        <div className="flex flex-wrap gap-2 sm:flex-nowrap sm:gap-3">
+          <FormItem className="w-full sm:w-1/2">
             <Label htmlFor="mortgage_term">Mortgage Term</Label>
 
             <FormControl aria-invalid={!!errors.mortgage_term}>
@@ -119,7 +115,7 @@ export function MortgageCalculatorForm({
             )}
           </FormItem>
 
-          <FormItem className="w-1/2">
+          <FormItem className="w-full sm:w-1/2">
             <Label htmlFor="interest_rate">Interest Rate</Label>
 
             <FormControl aria-invalid={!!errors.interest_rate}>
@@ -187,7 +183,7 @@ export function MortgageCalculatorForm({
 
       <button
         type="submit"
-        className="flex h-9 w-auto items-center justify-center gap-3 rounded-full bg-primary-lime px-6 transition-colors hover:bg-primary-lime/50 disabled:bg-lime-700/40"
+        className="flex h-9 w-full items-center justify-center gap-3 rounded-full bg-primary-lime px-6 transition-colors hover:bg-primary-lime/50 disabled:bg-lime-700/40 sm:w-auto"
         disabled={isSubmitting}
       >
         <img src={calculatorIcon} alt="" className="size-4" />

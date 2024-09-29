@@ -1,15 +1,9 @@
 import type { ComponentProps } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-type InputPrefixProps = ComponentProps<'label'> & {
-  direction?: 'left' | 'right'
-}
+type InputPrefixProps = ComponentProps<'label'>
 
-export function InputPrefix({
-  className,
-  direction = 'left',
-  ...props
-}: InputPrefixProps) {
+export function InputPrefix({ className, ...props }: InputPrefixProps) {
   return (
     <label
       className={twMerge(
