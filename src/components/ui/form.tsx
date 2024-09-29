@@ -14,8 +14,10 @@ export function FormControl({ className, ...props }: FormControlProps) {
     <div
       className={twMerge(
         'group relative flex h-8 w-full items-center overflow-hidden rounded border border-slate-500 text-sm font-bold transition-colors',
+        'hover:border-slate-700',
         'focus-within:border-primary-lime',
         'has-[:checked]:border-primary-lime has-[:checked]:bg-primary-lime/20',
+        'aria-[invalid=true]:border-primary-red',
         className
       )}
       {...props}
