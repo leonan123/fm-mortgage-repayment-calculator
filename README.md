@@ -9,6 +9,7 @@ This is a solution to the [Mortgage repayment calculator challenge on Frontend M
   - [Overview](#overview)
     - [The challenge](#the-challenge)
     - [Screenshot](#screenshot)
+    - [Links](#links)
   - [My process](#my-process)
     - [Built with](#built-with)
   - [Author](#author)
@@ -28,6 +29,11 @@ Users should be able to:
 ### Screenshot
 
 ![screenshot](./screenshot.png)
+
+### Links
+
+- [Solution URL](https://www.frontendmentor.io/solutions/mortgage-repayment-calculator-using-react-typescript-Xq2WbMTtas)
+- [Live Site URL](https://leonan123.github.io/fm-mortgage-repayment-calculator/)
 
 ## My process
 
